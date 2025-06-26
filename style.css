@@ -1,0 +1,93 @@
+/* style.css */
+/* Tailwind CSS is primarily used via CDN, but this file can be used for custom overrides or specific font imports */
+/* You can add any specific custom styles here if needed */
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Ensure elements use Inter font */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom styling for checkboxes to make them visually distinct */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid theme('colors.gray.300');
+    border-radius: theme('borderRadius.md');
+    width: theme('spacing.6'); /* 24px */
+    height: theme('spacing.6'); /* 24px */
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"]:checked {
+    background-color: theme('colors.blue.600'); /* Default checked color */
+    border-color: theme('colors.blue.600');
+}
+
+input[type="checkbox"]:checked::after {
+    content: '\2713'; /* Checkmark symbol */
+    font-size: 1.2rem; /* Adjust size */
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+/* Specific checked colors for each checkbox to match their background */
+#mentallyTired:checked {
+    background-color: theme('colors.blue.600');
+    border-color: theme('colors.blue.600');
+}
+
+#isLate:checked {
+    background-color: theme('colors.purple.600');
+    border-color: theme('colors.purple.600');
+}
+
+#lowEnergy:checked {
+    background-color: theme('colors.green.600');
+    border-color: theme('colors.green.600');
+}
+
+#restedEnough:checked {
+    background-color: theme('colors.indigo.600');
+    border-color: theme('colors.indigo.600');
+}
+
+#drankCoffee:checked {
+    background-color: theme('colors.red.600');
+    border-color: theme('colors.red.600');
+}
+
+/* Styling for the recommendation output to add visual feedback */
+.recommendation-highlight {
+    font-weight: bold;
+    color: theme('colors.blue.700'); /* A strong blue */
+    background-color: theme('colors.blue.50');
+    border-left: 5px solid theme('colors.blue.500');
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic responsive adjustments (Tailwind handles most, but for fine-tuning) */
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    .text-lg {
+        font-size: 1rem;
+    }
+}
