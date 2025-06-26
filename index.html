@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Break Timer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+        <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8 tracking-tight">Study Break Timer</h1>
+
+        <p class="text-center text-gray-600 mb-6 text-lg">Answer a few questions to get your study break recommendation!</p>
+
+        <div class="space-y-6">
+            <!-- Mentally Tired -->
+            <div class="flex items-center justify-between p-4 bg-blue-50 rounded-xl shadow-sm border border-blue-200">
+                <label for="mentallyTired" class="text-lg font-medium text-gray-700 cursor-pointer flex-grow">Are you mentally tired?</label>
+                <input type="checkbox" id="mentallyTired" class="h-6 w-6 rounded-md text-blue-600 focus:ring-blue-500 border-gray-300 transform transition-transform duration-200 hover:scale-105">
+            </div>
+
+            <!-- Late in the Day -->
+            <div class="flex items-center justify-between p-4 bg-purple-50 rounded-xl shadow-sm border border-purple-200">
+                <label for="isLate" class="text-lg font-medium text-gray-700 cursor-pointer flex-grow">Is it late in the day?</label>
+                <input type="checkbox" id="isLate" class="h-6 w-6 rounded-md text-purple-600 focus:ring-purple-500 border-gray-300 transform transition-transform duration-200 hover:scale-105">
+            </div>
+
+            <!-- Low Energy -->
+            <div class="flex items-center justify-between p-4 bg-green-50 rounded-xl shadow-sm border border-green-200">
+                <label for="lowEnergy" class="text-lg font-medium text-gray-700 cursor-pointer flex-grow">Is your energy low?</label>
+                <input type="checkbox" id="lowEnergy" class="h-6 w-6 rounded-md text-green-600 focus:ring-green-500 border-gray-300 transform transition-transform duration-200 hover:scale-105">
+            </div>
+
+            <!-- Break Duration -->
+            <div class="p-4 bg-yellow-50 rounded-xl shadow-sm border border-yellow-200">
+                <label for="breakDuration" class="block text-lg font-medium text-gray-700 mb-2">Break duration (minutes, if applicable):</label>
+                <input type="number" id="breakDuration" placeholder="e.g., 30" class="mt-1 block w-full px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 text-lg">
+                <p class="text-sm text-gray-500 mt-1">Enter 0 if you haven't taken a break yet.</p>
+            </div>
+
+            <!-- Follow-up Questions (initially hidden, shown after initial recommendation) -->
+            <div id="followUpQuestions" class="space-y-6 hidden mt-6 pt-6 border-t-2 border-gray-200">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">After your break...</h2>
+                <!-- Rested Enough -->
+                <div class="flex items-center justify-between p-4 bg-indigo-50 rounded-xl shadow-sm border border-indigo-200">
+                    <label for="restedEnough" class="text-lg font-medium text-gray-700 cursor-pointer flex-grow">Did you rest enough?</label>
+                    <input type="checkbox" id="restedEnough" class="h-6 w-6 rounded-md text-indigo-600 focus:ring-indigo-500 border-gray-300 transform transition-transform duration-200 hover:scale-105">
+                </div>
+
+                <!-- Drank Coffee -->
+                <div class="flex items-center justify-between p-4 bg-red-50 rounded-xl shadow-sm border border-red-200">
+                    <label for="drankCoffee" class="text-lg font-medium text-gray-700 cursor-pointer flex-grow">Did you drink coffee?</label>
+                    <input type="checkbox" id="drankCoffee" class="h-6 w-6 rounded-md text-red-600 focus:ring-red-500 border-gray-300 transform transition-transform duration-200 hover:scale-105">
+                </div>
+            </div>
+        </div>
+
+        <!-- Get Recommendation Button -->
+        <button id="getRecommendationBtn" class="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-bold text-xl mt-8 shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Get Recommendation
+        </button>
+
+        <!-- Recommendation Display Area -->
+        <div id="recommendationOutput" class="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-inner text-center">
+            <p class="text-xl font-semibold text-gray-800" id="outputMessage">Your recommendation will appear here.</p>
+        </div>
+
+        <!-- Message Box for alerts (replaces alert()) -->
+        <div id="messageBox" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white rounded-xl shadow-xl p-8 max-w-sm w-full text-center">
+                <p id="messageContent" class="text-xl font-semibold text-gray-800 mb-6"></p>
+                <button id="closeMessageBox" class="bg-blue-600 text-white py-2 px-6 rounded-lg font-bold hover:bg-blue-700 transition-all duration-300">OK</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
